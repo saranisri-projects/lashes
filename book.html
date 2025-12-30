@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}Book Appointment{% endblock %}
+
+{% block content %}
+<div class="hours-booking-wrapper">
+
+  <!-- LEFT -->
+  <section class="booking-ui">
+    <h2>Select a date</h2>
+
+    <input type="date" id="booking-date">
+
+    <div class="calendar-header">
+      <button id="prevMonth">‹</button>
+      <select id="monthSelect"></select>
+      <select id="yearSelect"></select>
+      <button id="nextMonth">›</button>
+    </div>
+
+    <div class="calendar weekdays">
+      <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+    </div>
+
+    <div id="calendar" class="calendar"></div>
+  </section>
+
+<!-- MIDDLE -->
+<section class="booking-ui">
+  <h2>Select Time</h2>
+  <div id="time-slots"></div>
+
+  <h2>Select Team</h2>
+  <div id="team-slots"></div>
+</section>
+
+<!-- RIGHT -->
+<section class="booking-summary">
+  <h2>Your Booking</h2>
+<!---->
+  <div id="summary">
+  <p><strong>Service:</strong> {{ service }}</p>
+  <p><strong>Date:</strong> <span id="summary-date">—</span></p>
+  <p><strong>Time:</strong> <span id="summary-time">—</span></p>
+  <p><strong>Team:</strong> <span id="summary-team">—</span></p>
+
+  <p class="summary-total">
+    <strong>Total service cost:</strong> $<span id="summary-service-price">0</span>
+  </p>
+
+  <p class="summary-total">
+    <strong>Deposit paid now:</strong> $30
+  </p>
+
+  <p class="summary-total due">
+    <strong>Amount due in person:</strong> $<span id="summary-due">0</span>
+  </p>
+</div>
+
+  <button id="confirmBooking" disabled>Confirm Booking</button>
+</section>
+
+</div>
+
+<script src="{{ url_for('static', filename='booking.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,180 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h1>Once Upon A Lash</h1>
+<p>Your dream lashes await</p>
+
+
+<!-- Book Now button -->
+<div class="social-link">
+    <a href="/services">Book Now</a>
+</div>
+
+<!-- Meet the Team button -->
+<div class="social-link">
+    <a href="/team">Meet the Team</a>
+</div>
+
+
+<!--Social Media Link-->
+<div class="social-link">
+    <a href="https://www.instagram.com/once.upon.a.lash_" target="_blank">
+        Follow us on Instagram
+    </a>
+</div>
+
+
+<!--Hours Section-->
+<div class="hours-booking-wrapper">
+
+    <section class="hours-section">
+        <h2>Hours</h2>
+
+        <div id="openStatus" class="status"></div>
+
+        <ul class="hours-list">
+            <li data-day="0">Sunday: Closed</li>
+            <li data-day="1">Monday: 9:30 AM – 3:30 PM</li>
+            <li data-day="2">Tuesday: 9:15 AM – 6:00 PM</li>
+            <li data-day="3">Wednesday: 9:15 AM – 6:30 PM</li>
+            <li data-day="4">Thursday: 9:30 AM – 6:00 PM</li>
+            <li data-day="5">Friday: 9:30 AM – 3:45 PM</li>
+            <li data-day="6">Saturday: 10:00 AM – 12:00 PM</li>
+        </ul>
+
+</div>
+
+<!--Hours Open-->
+<!--
+"0">Sunday: Closed</li>
+"1">Monday: 9:30 AM – 3:30 PM</li>
+"2">Tuesday: 9:15 AM – 6:00 PM</li>
+"3">Wednesday: 9:15 AM – 6:00 PM</li>
+"4">Thursday: 9:30 AM – 6:00 PM</li>
+"5">Friday: 9:30 AM – 3:45 PM</li>
+"6">Saturday: 10:00 AM – 12:00 PM</li>
+-->
+
+<script>
+const hours = {
+    0: null,                 // Sunday closed
+    1: [9.5, 15.75],             // Monday 9:15–9:30
+    2: [9.25, 18.25],
+    3: [9.25, 18.25],
+    4: [9.5, 18.25],
+    5: [9.5, 18.25],
+    6: [10, 14.25]              // Saturday 9–4:30
+};
+
+function formatTime(decimalHour) {
+    const hour = Math.floor(decimalHour);
+    const minutes = Math.round((decimalHour - hour) * 60);
+    const suffix = hour >= 12 ? "PM" : "AM";
+    const h = ((hour + 11) % 12 + 1);
+    return `${h}:${minutes.toString().padStart(2, "0")} ${suffix}`;
+}
+
+
+function updateOpenStatus() {
+    const now = new Date();
+    const day = now.getDay();
+    const hour = now.getHours() + now.getMinutes() / 60;
+    const statusEl = document.getElementById("openStatus");
+
+    document.querySelectorAll(".hours-list li").forEach(li => li.classList.remove("today"));
+
+    const todayRow = document.querySelector(`.hours-list li[data-day="${day}"]`);
+    if (todayRow) todayRow.classList.add("today");
+
+    const todayHours = hours[day];
+    
+
+    if (todayHours && hour >= todayHours[0] && hour < todayHours[1]) {
+        statusEl.textContent = "We are currently OPEN";
+        statusEl.className = "status open";
+    } else {
+        let nextDay = day;
+        while (true) {
+            nextDay = (nextDay + 1) % 7;
+            if (hours[nextDay]) break;
+        }
+
+        statusEl.textContent = `Currently CLOSED — Opens ${["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][nextDay]} at ${formatTime(hours[nextDay][0])}`;
+        statusEl.className = "status closed";
+    }
+}
+
+updateOpenStatus();
+setInterval(updateOpenStatus, 60000); // refresh every minute
+</script>
+
+
+
+<!--Reviews-->
+<section id="reviews" class="reviews-section">
+    <h2>Customer Reviews</h2>
+
+    <div class="reviews-summary">
+        <div class="avg-rating">
+            <span class="rating-number">{{ avg_rating }}</span>
+            <div class="stars">
+                {% for i in range(5) %}
+                    {% if i < avg_rating|round(0, 'floor') %}
+                        ★
+                    {% else %}
+                        ☆
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <p>Based on {{ total_reviews }} reviews</p>
+        </div>
+
+        <div class="rating-bars">
+            {% for i in range(5, 0, -1) %}
+            <div class="bar-row">
+                <span>{{ i }} ★</span>
+                <div class="bar">
+                    <div class="fill" style="width: {{ (rating_counts[i] / total_reviews * 100) if total_reviews else 0 }}%"></div>
+                </div>
+                <span>{{ rating_counts[i] }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="leave-review">
+        <h3>Leave a Review</h3>
+        <form method="POST">
+            <input name="name" type="text" placeholder="Your Name" required>
+            <select name="rating" required>
+                <option value="">Rating</option>
+                <option value="5">5</option>
+                <option value="4">4</option>
+                <option value="3">3</option>
+                <option value="2">2</option>
+                <option value="1">1</option>
+            </select>
+            <textarea name="text" placeholder="Write your review..." required></textarea>
+            <button type="submit">Submit Review</button>
+        </form>
+    </div>
+
+    <div class="review-list">
+        {% for r in reviews %}
+            <div class="review-card">
+                <strong>{{ r.name }}</strong>
+                <span class="review-stars">
+                    {% for i in range(r.rating) %}★{% endfor %}
+                    {% for i in range(5 - r.rating) %}☆{% endfor %}
+                </span>
+                <p>{{ r.text }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+
+
+
+{% endblock %}

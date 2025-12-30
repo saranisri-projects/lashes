@@ -1,0 +1,566 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background: #333;
+    padding: 15px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+}
+
+main {
+    padding: 40px;
+    text-align: center;
+}
+
+.site-header {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff0f5;
+}
+
+.site-header h1 {
+    margin: 0;
+    color: #b30059;
+}
+
+.tagline {
+    font-size: 0.8rem;
+    color: #e03091;
+}
+.site-header h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3rem;
+    letter-spacing: 1px;
+}
+
+/* services */
+.page-title {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.service-category {
+    margin-bottom: 3rem;
+}
+
+.service-category h2 {
+    border-bottom: 2px solid #f2c4d6;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+}
+
+.service-card {
+    border: 1px solid #eee;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    text-align: center;
+    background: white;
+}
+
+.service-card h3 {
+    margin-bottom: 0.3rem;
+}
+
+.price {
+    font-weight: bold;
+    color: #c26ba0;
+}
+
+.duration {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+
+/*Hours section*/
+.hours-section {
+    background: #fff0f7;
+    padding: 25px;
+    border-radius: 12px;
+    margin-top: 40px;
+    max-width: 500px;
+}
+
+.hours-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+.hours-list li {
+    padding: 6px 0;
+}
+
+.status {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+.open {
+    color: rgb(0, 0, 0);
+}
+
+.closed {
+    color: rgb(255, 0, 140);
+}
+
+/*Highlighting current day*/
+.today {
+    font-weight: bold;
+    background-color: #ffe1ef;
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+
+/*Banner Colour*/
+nav {
+    background-color: #ffc1dd;
+}
+
+nav a {
+    color: #5a0038;
+}
+
+nav a:hover {
+    color: white;
+}
+
+/*basic font*/
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/*Social Media Link*/
+.social-link {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.social-link a {
+    display: inline-block;
+    background-color: #ffd0e8;
+    color: #5a0038;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.social-link a:hover {
+    background-color: #ffb6d9;
+}
+
+/*Reviews*/
+.reviews-section {
+    padding: 60px 20px;
+    background: #fff0f6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.reviews-section h2 {
+    text-align: center;
+}
+
+.reviews-summary,
+.review-list,
+.leave-review {
+    width: 100%;
+    max-width: 900px;
+}
+
+.reviews-summary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.avg-rating {
+    text-align: center;
+}
+
+.rating-number {
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.stars {
+    color: rgb(254, 106, 210);
+    font-size: 22px;
+}
+
+.rating-bars {
+    width: 300px;
+}
+
+.bar-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.bar {
+    flex: 1;
+    height: 10px;
+    background: #ffffff;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.fill {
+    height: 100%;
+    background: #ff7ab8;
+}
+
+.leave-review form {
+    max-width: 400px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.leave-review input,
+.leave-review textarea,
+.leave-review select {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #fcfafa;
+}
+
+.leave-review button {
+    background: #ffd0e8;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.leave-review button:hover {
+    background: #ffb6d9;
+}
+
+/**/
+.review-list {
+    margin-top: 40px;
+    display: grid;
+    gap: 20px;
+    justify-content:center;
+}
+
+.review-card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.review-stars {
+    color: gold;
+    font-size: 14px;
+    margin-left: 6px;
+}
+
+/*Logo Size*/
+.logo img {
+    height: 50px;        /* controls logo size */
+    width: auto;
+    display: block;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    padding: 15px 0;
+}
+
+.logo img {
+    height: 60px;
+}
+
+
+/*Booking Calander*/
+.hours-booking-wrapper {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.booking-ui {
+    background: #ffe0ec;
+    padding: 20px;
+    border-radius: 12px;
+    min-width: 260px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+#time-slots button,
+#team-slots button {
+    display: block;
+    width: 100%;
+    margin-top: 8px;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    background: #ffd0e8;
+    cursor: pointer;
+}
+
+#time-slots button:hover,
+#team-slots button:hover {
+    background: #ffb6d9;
+}
+
+/*Booking Calander Visual*/
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.calendar button {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ffcbea;
+    background: #fff6fa;
+    cursor: pointer;
+}
+
+.calendar button:hover {
+    background: #f0f0f0;
+}
+
+.calendar button.selected {
+    background: black;
+    color: white;
+}
+
+/* Calendar Display Header */
+.calendar-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.calendar-header button {
+    background: #ffabd6;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.calendar-header select {
+    padding: 6px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+}
+
+.weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.weekdays div {
+    font-size: 12px;
+    color: #555;
+}
+
+/* button clicking for cart */
+.service-card.selectable {
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.service-card.selectable:hover {
+    transform: scale(1.03);
+}
+
+.service-card.selected {
+    outline: 3px solid #ff4fa3;
+    background-color: #ffd6ea;
+}
+
+/*floating button*/
+.floating-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+}
+
+.floating-btn button {
+    padding: 14px 36px;
+    border-radius: 999px;
+    border: none;
+    background: #ff4fa3;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.floating-btn button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.hidden {
+    display: none;
+}
+
+/* floating button*/
+.floating-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+}
+
+.floating-btn button {
+    padding: 14px 36px;
+    border-radius: 999px;
+    border: none;
+    background: #ff4fa3;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.floating-btn button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.hidden {
+    display: none;
+}
+
+.service-card.selected {
+    outline: 3px solid #ff4fa3;
+    transform: scale(1.02);
+}
+
+/* Booking Page */
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.calendar div {
+  padding: 10px;
+  text-align: center;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #fff0f9;
+}
+
+.calendar div:hover {
+  background: #ff9ed1;
+}
+
+.calendar .selected {
+  background: #ff61b8;
+  color: white;
+}
+
+/* Scroll Bar for Times */
+#time-slots {
+  max-height: 260px;        /* controls how tall the box is */
+  overflow-y: auto;         /* enables vertical scrolling */
+  padding-right: 6px;       /* prevents scrollbar from covering text */
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+/* Optional: nicer scrollbar (Chrome/Edge/Safari) */
+#time-slots::-webkit-scrollbar {
+  width: 6px;
+}
+
+#time-slots::-webkit-scrollbar-thumb {
+  background: #ff7ebc;
+  border-radius: 10px;
+}
+
+#time-slots::-webkit-scrollbar-track {
+  background: #f3f3f3;
+}
+
+/* Keeping Seperate Coloumns in Booking Page */
+.hours-booking-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 0.8fr; /* left, middle, right */
+  gap: 30px;
+  align-items: start;
+}
+
+/* Summary panel */
+.booking-summary {
+  position: sticky;
+  top: 100px; /* sticks while scrolling */
+  background: #ffd0e8;
+  padding: 20px;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  height: fit-content;
+}
+
+/* Make summary text clean */
+#summary p {
+  margin: 8px 0;
+  font-size: 15px;
+}
+
+/*Deposit*/
+.summary-total {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 2px solid #ffbde4;
+  font-size: 17px;
+  font-weight: 600;
+  color: #111;
+}

@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+
+{% block title %}Services{% endblock %}
+
+{% block content %}
+<h1 class="page-title">Services</h1>
+
+<!-- Booking Policy link -->
+<p><a href="#" id="bookingPolicyLink">Booking Policy</a></p>
+
+<!-- Modal -->
+<div id="bookingPolicyModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div id="modalBody"></div> <!-- content will be loaded here -->
+  </div>
+</div>
+
+<!-- making buttons clickable -->
+<form method="GET" action="/book" id="serviceForm">
+    <input type="hidden" name="service" id="selectedService" required>
+
+    {% for category, items in services.items() %}
+        <section class="service-category">
+            <h2>{{ category }}</h2>
+
+            <div class="service-grid">
+                {% for s in items %}
+                    <div class="service-card selectable"
+                         data-service="{{ s.name }}|{{ s.price }}|{{ s.duration }}">
+                        <h3>{{ s.name }}</h3>
+                        <p class="price">{{ s.price }}</p>
+                        <p class="duration">{{ s.duration }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    {% endfor %}
+
+   <!-- <button type="submit" class="confirm-btn">Add to Cart</button> -->
+</form>
+
+
+<!-- Modal styling -->
+<style>
+
+body {
+    background-color: #fce4f0; /* replace with any color you like */
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5); /* semi-transparent background */
+}
+
+.modal-content {
+    background-color: #eb8cc6;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+    position: relative;
+    max-height: 80vh;
+    overflow-y: auto; /* makes modal scrollable if content is long */
+}
+
+.close {
+    color: #fc8ec8;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #000;
+}
+
+#bookingPolicyLink {
+    color: #ff00ae;
+    text-decoration: underline;
+    cursor: pointer;
+}
+</style>
+
+<!-- Modal functionality -->
+<script>
+const modal = document.getElementById("bookingPolicyModal");
+const link = document.getElementById("bookingPolicyLink");
+const closeBtn = modal.querySelector(".close");
+const modalBody = document.getElementById("modalBody");
+
+// Open modal and fetch content from /booking-policy
+link.onclick = async function(event) {
+    event.preventDefault();
+    try {
+        const response = await fetch("/booking-policy");
+        const data = await response.text();
+        modalBody.innerHTML = data;
+        modal.style.display = "block";
+    } catch (err) {
+        modalBody.innerHTML = "<p>Could not load booking policy.</p>";
+        modal.style.display = "block";
+        console.error(err);
+    }
+}
+
+// Close modal when 'x' is clicked
+closeBtn.onclick = function() {
+    modal.style.display = "none";
+}
+
+// Close modal when clicking outside modal content
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
+
+<!--floating button-->
+<div id="floatingSelectBtn" class="floating-btn hidden">
+    <button type="submit" form="serviceForm">Select Service</button>
+</div>
+
+<!--clicking buttons to cart-->
+<script>
+const cards = document.querySelectorAll(".service-card.selectable");
+const hiddenInput = document.getElementById("selectedService");
+const floatingBtn = document.getElementById("floatingSelectBtn");
+
+cards.forEach(card => {
+    card.addEventListener("click", () => {
+        cards.forEach(c => c.classList.remove("selected"));
+        card.classList.add("selected");
+
+        hiddenInput.value = card.dataset.service;
+        floatingBtn.classList.remove("hidden");  // 👈 show floating button
+    });
+});
+
+// Prevent submit if no service chosen
+document.getElementById("serviceForm").addEventListener("submit", e => {
+    if (!hiddenInput.value) {
+        e.preventDefault();
+        alert("Please select a service.");
+    }
+});
+
+
+window.location.href = `/book?service=${encodeURIComponent(card.dataset.service)}`;
+
+</script>
+
+
+
+
+{% endblock %}

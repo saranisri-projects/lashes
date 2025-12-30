@@ -1,0 +1,16 @@
+<h1>Booking Summary</h1>
+
+{% if booking %}
+    <p><strong>Date:</strong> {{ booking.date }}</p>
+    <p><strong>Time:</strong> {{ booking.time }}</p>
+    <p><strong>Team Member:</strong> {{ booking.team }}</p>
+
+    {% set name, price, duration = booking.service.split('|') %}
+    <p><strong>Service:</strong> {{ name }}</p>
+    <p><strong>Price:</strong> {{ price }}</p>
+    <p><strong>Duration:</strong> {{ duration }}</p>
+
+    <a href="/confirm">Confirm Booking</a>
+{% else %}
+    <p>No booking yet.</p>
+{% endif %}
